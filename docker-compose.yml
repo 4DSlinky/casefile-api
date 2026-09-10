@@ -1,0 +1,13 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      ApiKey: local-dev-key-change-me
+      ConnectionStrings__Casefile: Data Source=/app/data/casefile.db
+    volumes:
+      - casefile-data:/app/data
+
+volumes:
+  casefile-data:

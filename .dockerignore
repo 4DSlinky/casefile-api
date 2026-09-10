@@ -1,0 +1,13 @@
+**/bin/
+**/obj/
+**/.vs/
+**/.vscode/
+**/.git/
+**/TestResults/
+**/*.db
+**/*.md
+!README.md
+.git
+.github
+tests
+http

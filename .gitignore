@@ -1,0 +1,31 @@
+## Build
+bin/
+obj/
+[Bb]uild/
+[Ll]og/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Data / secrets
+*.db
+*.db-shm
+*.db-wal
+appsettings.*.local.json
+.env
+.env.*
+!.env.example
+
+## OS / IDE
+.vs/
+.vscode/
+.idea/
+*.DS_Store
+Thumbs.db
+
+## Test / coverage
+TestResults/
+coverage/
+*.coverage
+*.coveragexml

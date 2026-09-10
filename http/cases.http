@@ -1,0 +1,44 @@
+@base = http://localhost:5080
+@key = local-dev-key-change-me
+
+### Health (no key)
+GET {{base}}/health
+
+### Create
+# @name create
+POST {{base}}/api/cases
+X-Api-Key: {{key}}
+Content-Type: application/json
+
+{
+  "title": "Cannot reset password",
+  "description": "User is locked out after 5 attempts",
+  "requesterEmail": "pat@example.com",
+  "severity": "High"
+}
+
+### List
+GET {{base}}/api/cases?page=1&pageSize=20
+X-Api-Key: {{key}}
+
+### Get one
+GET {{base}}/api/cases/{{create.response.body.$.id}}
+X-Api-Key: {{key}}
+
+### Illegal status jump (expect 409)
+POST {{base}}/api/cases/{{create.response.body.$.id}}/status
+X-Api-Key: {{key}}
+Content-Type: application/json
+
+{
+  "status": "Resolved"
+}
+
+### Legal status move
+POST {{base}}/api/cases/{{create.response.body.$.id}}/status
+X-Api-Key: {{key}}
+Content-Type: application/json
+
+{
+  "status": "InProgress"
+}
